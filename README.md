@@ -12,4 +12,8 @@ The example [workflow config file](https://github.com/currents-dev/gh-actions-ex
 
 - Note: use CLI arguments to customize your cypress runs, e.g.: `currents run --parallel --record --key <your currents.dev key> --group groupA`
 
-- Note: create an organization, get your record key on [Currents.dev](https://app.currents.dev) and set your [GH secret](https://docs.github.com/en/actions/reference/encrypted-secrets)
+- Note: create an organization, get your record key on [Currents.dev](https://app.currents.dev) and set [GH secret](https://docs.github.com/en/actions/reference/encrypted-secrets) variable `CURRENTS_RECORD_KEY`
+
+Here's an example of how the demo workflow appears in Currents dashboard:
+
+![Kapture 2021-09-16 at 12 14 16](https://user-images.githubusercontent.com/1637928/133671707-cd809410-863e-4118-9204-60410e17b0bd.gif)
