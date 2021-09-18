@@ -10,6 +10,8 @@ The example [workflow config file](https://github.com/currents-dev/gh-actions-ex
 
 - uses [Custom Test Command](https://github.com/cypress-io/github-action#custom-test-command) to run `currents` for recording test results and parallelization with [Currents.dev](https://currents.dev)
 
+- Note: set your project is from [Currents.dev](https://app.currents.dev) in `cypress.json`
+
 - Note: use CLI arguments to customize your cypress runs, e.g.: `currents run --parallel --record --key <your currents.dev key> --group groupA`
 
 - Note: create an organization, get your record key on [Currents.dev](https://app.currents.dev) and set [GH secret](https://docs.github.com/en/actions/reference/encrypted-secrets) variable `CURRENTS_RECORD_KEY`
