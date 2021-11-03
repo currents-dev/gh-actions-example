@@ -1,0 +1,13 @@
+version: 2.1
+orbs:
+  cypress: cypress-io/cypress@1
+workflows:
+  build:
+    jobs:
+      - cypress/install
+      - cypress/run:
+          command: npx currents run --record --key $CURRENTS_KEY
+          requires:
+            - cypress/install
+          parallel: true
+          parallelism: 2
