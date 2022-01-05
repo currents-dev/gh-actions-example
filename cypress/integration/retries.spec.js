@@ -3,7 +3,7 @@ describe('Retries', function () {
   it(
     'Runs a test with retries',
     {
-      retries: 3,
+      retries: 5,
     },
     function () {
       if (i > 1) {
