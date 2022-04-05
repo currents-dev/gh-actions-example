@@ -1,5 +1,12 @@
 name: End-to-end tests
-on: [push]
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+
 jobs:
   cypress-tests:
     runs-on: ubuntu-20.04
@@ -7,7 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         # run 3 copies of the current job in parallel
-        containers: [1, 2, 3, 4, 5]
+        containers: [1, 2, 3]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
