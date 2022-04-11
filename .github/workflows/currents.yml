@@ -18,6 +18,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        # see https://currents.dev/readme/ci-setup/github-actions#how-to-setup-git-commit-data-for-cypress-when-using-github-actions
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
