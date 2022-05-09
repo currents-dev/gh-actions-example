@@ -3,5 +3,5 @@
   "baseUrl": "https://en.wikipedia.org/",
   "projectId": "Ij0RfK",
   "video": true,
-  "videoUploadOnPasses": false
+  "videoUploadOnPasses": true
 }
