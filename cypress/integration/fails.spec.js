@@ -48,7 +48,7 @@ describe("Some tests fail", function () {
     });
   });
 
-  it.skip("Failing Test B", function () {
+  it("Failing Test B", function () {
     cy.visit("/");
     cy.get("#simpleSearch").type("Africa");
     cy.get(".suggestions-result").first().click();
