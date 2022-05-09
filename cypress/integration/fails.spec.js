@@ -64,19 +64,6 @@ describe("Some tests fail", function () {
       "Crocodile",
       "Crow",
       "Curlew",
-      "Deer",
-      "Dinosaur",
-      "Dog",
-      "Dogfish",
-      "Dolphin",
-      "Dotterel",
-      "Dove",
-      "Dragonfly",
-      "Duck",
-      "Dugong",
-      "Dunlin",
-      "Eagle",
-      "Echidna",
     ].forEach((a) => {
       cy.get("#simpleSearch").type(a);
       cy.wait(1000);
