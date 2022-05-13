@@ -1,4 +1,4 @@
-describe('No  tests', function () {
+describe('No. tests', function () {
   it.skip('A ', function () {
     cy.visit('/');
     cy.get('#simpleSearch').type('Africa');
