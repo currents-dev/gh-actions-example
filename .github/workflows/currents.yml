@@ -28,6 +28,6 @@ jobs:
 
       # Run all Cypress tests
       - name: Run Cypress on Currents.dev
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           command: yarn currents run --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
