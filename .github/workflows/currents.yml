@@ -18,6 +18,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
         # populate commit message for merge commits
         # see ://currents.dev/readme/ci-setup/github-actions
         with:
