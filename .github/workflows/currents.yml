@@ -17,17 +17,19 @@ jobs:
         containers: [1, 2, 3]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-        # see https://currents.dev/readme/ci-setup/github-actions#how-to-setup-git-commit-data-for-cypress-when-using-github-actions
+        uses: actions/checkout@v3
+
+        # populate commit message for merge commits
+        # see ://currents.dev/readme/ci-setup/github-actions
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
       # Install Currents
-      - name: Install currents
-        run: yarn add @currents/cli
+      - name: Install dependencies
+        run: yarn install --ci
 
       # Run all Cypress tests
       - name: Run Cypress on Currents.dev
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
-          command: yarn currents run --record --parallel --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
+          command: yarn currents run --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
