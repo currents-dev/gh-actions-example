@@ -22,13 +22,11 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       # Install Currents
-      - name: Install currents
-        run: yarn add @currents/cli
+      - name: Install dependencies
+        run: yarn install --ci
 
       # Run all Cypress tests
       - name: Run Cypress on Currents.dev
         uses: cypress-io/github-action@v2
-        env:
-          DEBUG: cypress:server:record:ci-info
         with:
           command: yarn currents run --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
