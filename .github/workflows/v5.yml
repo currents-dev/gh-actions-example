@@ -35,4 +35,7 @@ jobs:
           wait-on: https://en.wikipedia.org
           wait-on-timeout: 120
           install: false
-          command: yarn currents run --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
+          command: |
+            yarn currents run --record --parallel \
+            --project <project> --config <config>
+            --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} \ --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
