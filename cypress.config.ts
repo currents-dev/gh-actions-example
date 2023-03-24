@@ -7,5 +7,4 @@ module.exports = defineConfig({
   },
   video: true,
   videoUploadOnPasses: false,
-  projectId: "Ij0RfK",
 });
