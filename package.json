@@ -12,6 +12,7 @@
   "dependencies": {
     "cypress": "^12.8.1",
     "cypress-cloud": "^1.5.5",
+    "uri-js": "^4.4.1",
     "ws": "^8.13.0"
   }
 }
