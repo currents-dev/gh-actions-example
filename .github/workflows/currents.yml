@@ -22,11 +22,14 @@ jobs:
         # see ://currents.dev/readme/ci-setup/github-actions
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "yarn"
 
       # Install Currents
       - name: Install dependencies
         run: |
-          npm config ls -l
           npm ci
 
       # Run all Cypress tests
