@@ -16,4 +16,5 @@ The example [workflow config file](https://github.com/currents-dev/gh-actions-ex
 
 Here's an example of how the demo workflow appears in Currents dashboard:
 
-![Kapture 2021-09-16 at 12 14 16](https://user-images.githubusercontent.com/1637928/133671707-cd809410-863e-4118-9204-60410e17b0bd.gif)
+
+https://user-images.githubusercontent.com/1637928/227701237-db4d7a7f-b26b-46ac-ba6a-3806ede37671.mp4
