@@ -15,9 +15,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         # populate commit message for merge commits
-        # see ://currents.dev/readme/ci-setup/github-actions
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
+        # see https://currents.dev/readme/ci-setup/github-actions
+        # with:
+        #  ref: ${{ github.event.pull_request.head.sha }}
 
       - uses: actions/setup-node@v3
         with:
