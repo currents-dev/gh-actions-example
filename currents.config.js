@@ -1,3 +1,4 @@
 module.exports = {
-  projectId: "Ij0RfK",
+  projectId: "9aOuF6",
+  cloudServiceUrl: "https://cy-staging.currents.dev",
 };

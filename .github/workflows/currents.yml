@@ -34,4 +34,4 @@ jobs:
       - name: Run Cypress on Currents.dev
         uses: cypress-io/github-action@v4
         with:
-          command: yarn cypress-cloud run --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id ${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}
+          command: yarn cypress-cloud run --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY_STAGING }} --ci-build-id ${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}
