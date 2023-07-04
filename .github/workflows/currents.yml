@@ -39,6 +39,7 @@ jobs:
         if: ${{ cancelled() }}
         uses: currents-dev/cancel-run-gh-action@v1
         with:
+          api-url: "https://api-staging.currents.dev/v1"
           api-token: ${{ secrets.CURRENTS_API_KEY_STAGING }}
           github-run-id: ${{ github.run_id }}
           github-run-attempt: ${{ github.run_attempt }}
