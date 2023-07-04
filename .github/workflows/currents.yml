@@ -2,7 +2,6 @@ name: Cypress Tests
 
 on:
   push:
-  pull_request:
 
 jobs:
   cypress-tests:
@@ -38,9 +37,8 @@ jobs:
 
       - name: Cancel the run if workflow is cancelled
         if: ${{ cancelled() }}
-        uses: vCaisim/cancel-currents-run-action@v1
+        uses: currents-dev/cancel-run-gh-action@v1
         with:
-          currents-api-url: "https://api-staging.currents.dev/v1"
-          bearer-token: ${{ secrets.CURRENTS_API_KEY_STAGING }}
+          api-token: ${{ secrets.CURRENTS_API_KEY_STAGING }}
           github-run-id: ${{ github.run_id }}
           github-run-attempt: ${{ github.run_attempt }}
