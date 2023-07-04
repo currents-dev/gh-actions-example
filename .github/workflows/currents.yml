@@ -15,9 +15,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         # populate commit message for merge commits
-        # see ://currents.dev/readme/ci-setup/github-actions
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
+        # see https://currents.dev/readme/ci-setup/github-actions
+        # with:
+        #  ref: ${{ github.event.pull_request.head.sha }}
 
       - uses: actions/setup-node@v3
         with:
@@ -34,3 +34,11 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           command: yarn cypress-cloud run --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id ${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}
+
+      - name: Cancel the run if workflow is cancelled
+        if: ${{ cancelled() }}
+        uses: currents-dev/cancel-run-gh-action@v1
+        with:
+          api-token: ${{ secrets.CURRENTS_API_KEY }}
+          github-run-id: ${{ github.run_id }}
+          github-run-attempt: ${{ github.run_attempt }}
