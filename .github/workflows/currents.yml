@@ -33,13 +33,12 @@ jobs:
       - name: Run Cypress on Currents.dev
         uses: cypress-io/github-action@v4
         with:
-          command: yarn cypress-cloud run --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY_STAGING }} --ci-build-id ${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}
+          command: yarn cypress-cloud run --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id ${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}
 
       - name: Cancel the run if workflow is cancelled
         if: ${{ cancelled() }}
         uses: currents-dev/cancel-run-gh-action@v1
         with:
-          api-url: "https://api-staging.currents.dev/v1"
-          api-token: ${{ secrets.CURRENTS_API_KEY_STAGING }}
+          api-token: ${{ secrets.CURRENTS_API_KEY }}
           github-run-id: ${{ github.run_id }}
           github-run-attempt: ${{ github.run_attempt }}
