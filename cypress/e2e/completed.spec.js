@@ -37,7 +37,7 @@ context("Mark all as completed", function () {
     cy.get("@todos").eq(2).should("not.have.class", "completed");
   });
 
-  it("complete all checkbox should update state when items are completed / cleared", function () {
+  it("complete all checkbox should update state when items are completed or cleared", function () {
     // alias the .toggle-all for reuse later
     cy.get(".toggle-all")
       .as("toggleAll")
