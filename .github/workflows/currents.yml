@@ -42,3 +42,11 @@ jobs:
           api-token: ${{ secrets.CURRENTS_API_KEY }}
           github-run-id: ${{ github.run_id }}
           github-run-attempt: ${{ github.run_attempt }}
+
+      - name: Save cypress traces
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-traces
+          path: |
+            apps/web/cypress-traces/**/*

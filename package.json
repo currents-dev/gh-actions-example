@@ -11,7 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "cypress": "^12.8.1",
-    "cypress-cloud": "^1.5.6",
+    "cypress-cloud": "^1.9.1",
+    "cypress-debugger": "^1.0.6",
+    "cypress-plugin-init": "^0.0.8",
     "typescript": "^5.0.2"
   }
 }
