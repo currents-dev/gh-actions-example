@@ -49,4 +49,4 @@ jobs:
         with:
           name: cypress-traces
           path: |
-            apps/web/cypress-traces
+            apps/web/cypress-traces/**/*
