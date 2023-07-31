@@ -33,7 +33,7 @@ jobs:
       - name: Run Cypress on Currents.dev
         uses: cypress-io/github-action@v4
         with:
-          command: yarn cypress-cloud run --record --parallel --browser chrome --key YakSabgBLb7D40nZ --ci-build-id ${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}
+          command: yarn cypress-cloud run --record --parallel --browser chrome --key YakSabgBLb7D40nZ --ci-build-id ${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}} --tag ReleaseSmoke --group ReleaseSmokeTests --env grepTags=@smoke,grepFilterSpecs=true --spec "cypress/e2e/clear.spec.js, cypress/e2e/completed.spec.js, cypress/e2e/counter.spec.js, cypress/e2e/edit.spec.js, cypress/e2e/item.spec.js"
 
       - name: Cancel the run if workflow is cancelled
         if: ${{ cancelled() }}
