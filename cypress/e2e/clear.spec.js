@@ -5,6 +5,7 @@ let TODO_ITEM_THREE = "book a doctors appointment";
 context("Clear completed button", function () {
   beforeEach(function () {
     cy.createDefaultTodos().as("todos");
+    console.log("HOLA")
   });
 
   it(
