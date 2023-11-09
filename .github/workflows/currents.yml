@@ -22,12 +22,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: "yarn"
 
       # Install Currents
       - name: Install dependencies
         run: |
-          yarn install --frozen-lockfile
+          npm ci
 
       # Run all Cypress tests
       - name: Run Cypress on Currents.dev
