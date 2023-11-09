@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "currents:custom": "npx cypress install --force && npx currents run",
+    "currents:custom": "npx cypress install --force && npx cypress-cloud",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
