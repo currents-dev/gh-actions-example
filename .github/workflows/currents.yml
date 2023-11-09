@@ -22,18 +22,21 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: "yarn"
 
       # Install Currents
       - name: Install dependencies
         run: |
-          yarn install --frozen-lockfile
+          npm ci
 
       # Run all Cypress tests
       - name: Run Cypress on Currents.dev
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
+        env:
+          CYPRESS_DOWNLOAD_MIRROR: https://cy-cdn.currents.dev
+
         with:
-          command: yarn cypress-cloud run --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id ${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}
+          command: |
+            npm run currents:custom -- --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
 
       - name: Cancel the run if workflow is cancelled
         if: ${{ cancelled() }}
