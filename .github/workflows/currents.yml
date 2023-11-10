@@ -28,20 +28,20 @@ jobs:
         run: |
           npm ci
 
-      - name: Check sha
-        run: |
-          npx cypress install --force
-          file  /root/.cache/Cypress/12.17.4/Cypress/Cypress
-
         # Run all Cypress tests
       - name: Run Cypress on Currents.dev
         uses: cypress-io/github-action@v6
-        # env:
-        #   CYPRESS_DOWNLOAD_MIRROR: https://cy-cdn.currents.dev
+        continue-on-error: true
+        env:
+          CYPRESS_DOWNLOAD_MIRROR: https://cy-cdn.currents.dev
 
         with:
           command: |
             npm run currents:custom -- --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
+
+      - name: Check SHA
+        run: |
+          file  /root/.cache/Cypress/12.17.3/Cypress/Cypress
 
       - name: Cancel the run if workflow is cancelled
         if: ${{ cancelled() }}

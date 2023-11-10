@@ -24,7 +24,7 @@
     "lazy-ass" "1.6.0"
     "ramda" "0.26.1"
 
-"@cypress/request@2.88.12":
+"@cypress/request@^2.88.11":
   "version" "2.88.12"
   dependencies:
     "aws-sign2" "~0.7.0"
@@ -461,12 +461,12 @@
     "ts-pattern" "^4.3.0"
     "ws" "^8.13.0"
 
-"cypress@^12.17.4", "cypress@>=10.0.0":
-  "integrity" "sha512-gAN8Pmns9MA5eCDFSDJXWKUpaL3IDd89N9TtIupjYnzLSmlpVr+ZR+vb4U/qaMp+lB6tBvAmt7504c3Z4RU5KQ=="
-  "resolved" "https://registry.npmjs.org/cypress/-/cypress-12.17.4.tgz"
-  "version" "12.17.4"
+"cypress@>=10.0.0", "cypress@12.17.3":
+  "integrity" "sha512-/R4+xdIDjUSLYkiQfwJd630S81KIgicmQOLXotFxVXkl+eTeVO+3bHXxdi5KBh/OgC33HWN33kHX+0tQR/ZWpg=="
+  "resolved" "https://registry.npmjs.org/cypress/-/cypress-12.17.3.tgz"
+  "version" "12.17.3"
   dependencies:
-    "@cypress/request" "2.88.12"
+    "@cypress/request" "^2.88.11"
     "@cypress/xvfb" "^1.2.4"
     "@types/node" "^16.18.39"
     "@types/sinonjs__fake-timers" "8.1.1"
@@ -501,7 +501,6 @@
     "minimist" "^1.2.8"
     "ospath" "^1.2.2"
     "pretty-bytes" "^5.6.0"
-    "process" "^0.11.10"
     "proxy-from-env" "1.0.0"
     "request-progress" "^3.0.0"
     "semver" "^7.5.3"
@@ -1344,9 +1343,6 @@
   "version" "7.0.1"
   dependencies:
     "parse-ms" "^2.1.0"
-
-"process@^0.11.10":
-  "version" "0.11.10"
 
 "proxy-from-env@^1.1.0":
   "integrity" "sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg=="
