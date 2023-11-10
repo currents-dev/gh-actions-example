@@ -28,7 +28,12 @@ jobs:
         run: |
           npm ci
 
-      # Run all Cypress tests
+      - name: Check sha
+        run: |
+          npx cypress install --force
+          file  /root/.cache/Cypress/12.17.4/Cypress/Cypress
+
+        # Run all Cypress tests
       - name: Run Cypress on Currents.dev
         uses: cypress-io/github-action@v6
         # env:
