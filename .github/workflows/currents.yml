@@ -31,8 +31,8 @@ jobs:
       # Run all Cypress tests
       - name: Run Cypress on Currents.dev
         uses: cypress-io/github-action@v6
-        env:
-          CYPRESS_DOWNLOAD_MIRROR: https://cy-cdn.currents.dev
+        # env:
+        #   CYPRESS_DOWNLOAD_MIRROR: https://cy-cdn.currents.dev
 
         with:
           command: |
