@@ -41,7 +41,7 @@ jobs:
 
       - name: Check SHA
         run: |
-          file  /root/.cache/Cypress/12.17.3/Cypress/Cypress
+          file  /root/.cache/Cypress/12.4.0/Cypress/Cypress
 
       - name: Cancel the run if workflow is cancelled
         if: ${{ cancelled() }}
