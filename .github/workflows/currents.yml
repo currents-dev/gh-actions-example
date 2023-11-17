@@ -27,11 +27,24 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install --frozen-lockfile
+
+      - name: Unblock Cypress
+        # working-directory: "services/rails"
+        run: |
           CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
+
+          echo 👀 Cypress Cache
           yarn cypress cache list
           yarn cypress cache path
+
+          echo 👀 Cypress SHA
           file `yarn cypress cache path`/12.17.4/Cypress/Cypress
 
+          echo 👀 Yarn global dependencies
+          yarn global list | grep cypress
+
+          echo 👀 Yarn local dependencies
+          yarn list | grep cypress
         # Run all Cypress tests
       - name: Run Cypress on Currents.dev
         uses: cypress-io/github-action@v6
