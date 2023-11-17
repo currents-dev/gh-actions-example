@@ -26,7 +26,7 @@ jobs:
       # Install Currents
       - name: Install dependencies
         run: |
-          yarn install --frozen-lockfile
+          npx ci
 
       - name: Unblock Cypress
         # working-directory: "services/rails"
@@ -34,26 +34,25 @@ jobs:
           echo 🕊️ Download Free Cypress
           CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
 
-          echo 🕊️ Verify Cypress
+          echo ✅ Verify Cypress
           npx cypress verify
 
           echo 👀 Cypress Cache
-          yarn cypress cache list
-          yarn cypress cache path
-
-          echo 👀 Cypress SHA
-          file `npx cypress cache path`/12.17.4/Cypress/Cypress
+          npx cypress cache list
+          npx cypress cache path
 
       - name: Run Cypress on Currents.dev
         env:
+          # enable verbose logging
           DEBUG: \@cypress/github-action
         uses: cypress-io/github-action@v6
         continue-on-error: true
 
         with:
+          # 🔥 Set to false to prevent restoring cached blocking Cypress binary
           install: false
           command: |
-            yarn cypress-cloud --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
+            npx cypress-cloud --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
 
       - name: Cancel the run if workflow is cancelled
         if: ${{ cancelled() }}
