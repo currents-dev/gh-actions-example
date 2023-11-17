@@ -31,9 +31,6 @@ jobs:
       - name: Unblock Cypress
         # working-directory: "services/rails"
         run: |
-          echo 👀 Cypress SHA before
-          file `npx cypress cache path`/12.17.4/Cypress/Cypress
-
           echo 🕊️ Download Free Cypress
           CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
 
@@ -44,13 +41,8 @@ jobs:
           yarn cypress cache list
           yarn cypress cache path
 
-          echo 👀 Cypress SHA after
+          echo 👀 Cypress SHA
           file `npx cypress cache path`/12.17.4/Cypress/Cypress
-
-
-          echo 👀 Yarn local dependencies
-          yarn list | grep cypress
-        # Run all Cypress tests
 
       - name: Run Cypress on Currents.dev
         env:
@@ -60,7 +52,6 @@ jobs:
 
         with:
           install: false
-          cache-key: "new-cypress-cache-key"
           command: |
             yarn cypress-cloud --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
 
