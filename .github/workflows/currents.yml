@@ -31,17 +31,18 @@ jobs:
       - name: Unblock Cypress
         # working-directory: "services/rails"
         run: |
+          echo 👀 Cypress SHA before
+          file `npx cypress cache path`/12.17.4/Cypress/Cypress
+
           CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
 
           echo 👀 Cypress Cache
           yarn cypress cache list
           yarn cypress cache path
 
-          echo 👀 Cypress SHA
+          echo 👀 Cypress SHA after
           file `npx cypress cache path`/12.17.4/Cypress/Cypress
 
-          echo 👀 Yarn global dependencies
-          yarn global list | grep cypress
 
           echo 👀 Yarn local dependencies
           yarn list | grep cypress
