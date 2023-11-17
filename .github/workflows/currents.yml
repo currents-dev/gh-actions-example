@@ -34,7 +34,8 @@ jobs:
           echo 👀 Cypress SHA before
           file `npx cypress cache path`/12.17.4/Cypress/Cypress
 
-          CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
+          echo 🕊️ Free Cypress
+          NODE_DEBUG=http CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
 
           echo 👀 Cypress Cache
           yarn cypress cache list
