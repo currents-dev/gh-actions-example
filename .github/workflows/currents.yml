@@ -54,7 +54,7 @@ jobs:
 
       - name: Run Cypress on Currents.dev
         env:
-          DEBUG: @cypress/github-action
+          DEBUG: \@cypress/github-action
         uses: cypress-io/github-action@v6
         continue-on-error: true
 
