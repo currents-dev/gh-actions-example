@@ -53,6 +53,8 @@ jobs:
         # Run all Cypress tests
 
       - name: Run Cypress on Currents.dev
+        env:
+          DEBUG: "@cypress/github-action"
         uses: cypress-io/github-action@v6
         continue-on-error: true
 
