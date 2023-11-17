@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "12.4.0",
+    "cypress": "12.17.4",
     "cypress-cloud": "^1.9.6",
     "typescript": "^5.0.2"
   }
