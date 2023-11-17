@@ -38,7 +38,7 @@ jobs:
           yarn cypress cache path
 
           echo 👀 Cypress SHA
-          file `yarn cypress cache path`/12.17.4/Cypress/Cypress
+          file `npx cypress cache path`/12.17.4/Cypress/Cypress
 
           echo 👀 Yarn global dependencies
           yarn global list | grep cypress
@@ -46,6 +46,7 @@ jobs:
           echo 👀 Yarn local dependencies
           yarn list | grep cypress
         # Run all Cypress tests
+
       - name: Run Cypress on Currents.dev
         uses: cypress-io/github-action@v6
         continue-on-error: true
