@@ -6,7 +6,7 @@ The example [workflow config file](https://github.com/currents-dev/gh-actions-ex
 
 - runs 3 containers with cypress tests in parallel
 
-- install block-free Cypress binaries
+- install [block-free Cypress binaries](https://currents.dev/readme/integration-with-cypress/alternative-cypress-binaries)
 
 - uses [Custom Test Command](https://github.com/cypress-io/github-action#custom-test-command) to run `cypress-cloud` for recording test results and parallelization with [Currents.dev](https://currents.dev)
 
