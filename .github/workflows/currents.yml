@@ -37,6 +37,8 @@ jobs:
           # echo 🕊️ Download Free Cypress
           # CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
 
+          npx cypress install --force
+
           echo 🕊️ Verify Cypress
           npx cypress verify
 
