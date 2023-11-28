@@ -23,6 +23,10 @@ jobs:
         with:
           node-version: 16
 
+      - name: Print Event Payload
+        run: |
+          cat $GITHUB_EVENT_PATH
+
       - name: Print Env variables
         run: |
           printenv
