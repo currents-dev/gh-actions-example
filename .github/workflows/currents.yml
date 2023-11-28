@@ -33,7 +33,6 @@ jobs:
           npx ci
 
       - name: Unblock Cypress
-        # working-directory: "services/rails"
         run: |
           echo 🕊️ Download Free Cypress
           CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
@@ -56,7 +55,7 @@ jobs:
           # 🔥 Set to false to prevent restoring cached blocking Cypress binary
           install: false
           command: |
-            npx cypress-cloud --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
+            npx cypress-cloud --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id ${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}
 
       - name: Cancel the run if workflow is cancelled
         if: ${{ cancelled() }}
