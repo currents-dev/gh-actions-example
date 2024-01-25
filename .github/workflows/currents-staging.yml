@@ -1,0 +1,73 @@
+name: Cypress Tests
+
+on:
+  pull_request:
+
+jobs:
+  cypress-tests:
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        # run 3 copies of the current job in parallel
+        containers: [1, 2, 3]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        # populate commit message for merge commits
+        # see https://currents.dev/readme/ci-setup/github-actions
+        # with:
+        #  ref: ${{ github.event.pull_request.head.sha }}
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Print Event Payload
+        run: |
+          cat $GITHUB_EVENT_PATH
+
+      - name: Print Env variables
+        run: |
+          printenv
+
+      # Install Currents
+      - name: Install dependencies
+        run: |
+          npx ci
+
+      - name: Unblock Cypress
+        run: |
+          echo 🕊️ Download Free Cypress
+          CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
+
+          echo ✅ Verify Cypress
+          npx cypress verify
+
+          echo 👀 Cypress Cache
+          npx cypress cache list
+          npx cypress cache path
+
+      - name: Run Cypress on Currents.dev
+        env:
+          # enable verbose logging
+          DEBUG: \@cypress/github-action
+          CURRENTS_ENFORCE_IS_CURRENTS: 1
+          CURRENTS_PROJECT_ID: 9aOuF6
+          CURRENTS_API_URL: https://cy-staging.currents.dev
+        uses: cypress-io/github-action@v6
+        continue-on-error: true
+
+        with:
+          # 🔥 Set to false to prevent restoring cached blocking Cypress binary
+          install: false
+          command: |
+            npx cypress-cloud --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id ${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}
+
+      - name: Cancel the run if workflow is cancelled
+        if: ${{ cancelled() }}
+        uses: currents-dev/cancel-run-gh-action@v1
+        with:
+          api-token: ${{ secrets.CURRENTS_API_KEY_STAGING }}
+          github-run-id: ${{ github.run_id }}
+          github-run-attempt: ${{ github.run_attempt }}
