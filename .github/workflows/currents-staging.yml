@@ -62,7 +62,7 @@ jobs:
           # 🔥 Set to false to prevent restoring cached blocking Cypress binary
           install: false
           command: |
-          CURRENTS_API_URL=https://cy-staging.currents.dev CURRENTS_PROJECT_ID=9aOuF6 CURRENTS_ENFORCE_IS_CURRENTS=1 npx cypress-cloud --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id ${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}
+            CURRENTS_API_URL=https://cy-staging.currents.dev CURRENTS_PROJECT_ID=9aOuF6 CURRENTS_ENFORCE_IS_CURRENTS=1 npx cypress-cloud --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id ${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}
 
       - name: Cancel the run if workflow is cancelled
         if: ${{ cancelled() }}
