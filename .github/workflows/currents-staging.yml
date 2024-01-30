@@ -1,7 +1,7 @@
-name: Cypress Tests
+name: Cypress Tests Staging
 
 on:
-  push:
+  pull_request:
 
 jobs:
   cypress-tests:
@@ -21,7 +21,15 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
+
+      - name: Print Event Payload
+        run: |
+          cat $GITHUB_EVENT_PATH
+
+      - name: Print Env variables
+        run: |
+          printenv
 
       # Install Currents
       - name: Install dependencies
@@ -29,7 +37,6 @@ jobs:
           npx ci
 
       - name: Unblock Cypress
-        # working-directory: "services/rails"
         run: |
           echo 🕊️ Download Free Cypress
           CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
@@ -45,6 +52,9 @@ jobs:
         env:
           # enable verbose logging
           DEBUG: \@cypress/github-action
+          CURRENTS_ENFORCE_IS_CURRENTS: 1
+          CURRENTS_PROJECT_ID: 9aOuF6
+          CURRENTS_API_URL: https://cy-staging.currents.dev
         uses: cypress-io/github-action@v6
         continue-on-error: true
 
@@ -52,12 +62,12 @@ jobs:
           # 🔥 Set to false to prevent restoring cached blocking Cypress binary
           install: false
           command: |
-            npx cypress-cloud --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
+            npx cypress-cloud --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY_STAGING }} --ci-build-id ${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}
 
       - name: Cancel the run if workflow is cancelled
         if: ${{ cancelled() }}
         uses: currents-dev/cancel-run-gh-action@v1
         with:
-          api-token: ${{ secrets.CURRENTS_API_KEY }}
+          api-token: ${{ secrets.CURRENTS_API_KEY_STAGING }}
           github-run-id: ${{ github.run_id }}
           github-run-attempt: ${{ github.run_attempt }}
