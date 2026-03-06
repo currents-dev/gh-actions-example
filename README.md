@@ -4,7 +4,7 @@
 >
 > For the latest examples and updates, please visit our new repository:
 >
-> # [👉 https://github.com/currents-dev/currents-examples](https://github.com/currents-dev/currents-examples/tree/main/playwright/ci/github-actions)
+> # [👉 https://github.com/currents-dev/currents-examples](https://github.com/currents-dev/currents-examples/tree/main/cypress/github-actions)
 
 ---
 
