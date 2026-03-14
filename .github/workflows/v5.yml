@@ -1,0 +1,38 @@
+name: GH Actions v5
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+
+jobs:
+  cypress-tests:
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        # run 3 copies of the current job in parallel
+        containers: [1, 2, 3]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+        # populate commit message for merge commits
+        # see ://currents.dev/readme/ci-setup/github-actions
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      # Install Currents
+      - name: Install dependencies
+        run: yarn install --ci
+
+      # Run all Cypress tests
+      - name: Run Cypress on Currents.dev
+        uses: cypress-io/github-action@v5
+        with:
+          wait-on: https://en.wikipedia.org
+          wait-on-timeout: 120
+          install: false
+          command: yarn currents run --record --parallel --browser chrome --key ${{ secrets.CURRENTS_RECORD_KEY }} --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
